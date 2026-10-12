@@ -15,134 +15,141 @@
     --surface: #faf8f3;
     --surface-raised: #ffffff;
     --border: #e4e0d4;
-    --accent: #c9622a;
+    --accent: #00825A;
     --accent-ink: #ffffff;
     --mono: "JetBrains Mono", "SF Mono", Consolas, monospace;
+    --serif: Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
     --sans: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    font-family: var(--sans);
-    color: var(--ink);
-    background: var(--surface);
-    line-height: 1.5;
-  }
+  body { margin: 0; font-family: var(--sans); color: var(--ink); background: var(--surface); line-height: 1.6; }
   a { color: inherit; }
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 
-  header.top {
-    position: sticky; top: 0; z-index: 10;
-    background: rgba(250,248,243,0.92);
-    backdrop-filter: blur(6px);
-    border-bottom: 1px solid var(--border);
-  }
-  nav.wrap {
-    display: flex; align-items: center; justify-content: space-between;
-    height: 64px;
-  }
-  .brand { font-weight: 700; font-size: 17px; letter-spacing: -0.01em; text-decoration: none; }
+  /* ===== TOP BAR (pill nav) ===== */
+  header.top { position: sticky; top: 0; z-index: 20; background: #0c1a15; color: #f3f1ea; }
+  nav.wrap { display: flex; align-items: center; justify-content: space-between; height: 88px; }
+  .brand { font-family: var(--serif); font-weight: 700; font-size: 22px; letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none; color: #f3f1ea; }
   .brand span { color: var(--accent); }
-  .navlinks { display: flex; gap: 28px; font-size: 14px; }
-  .navlinks a { text-decoration: none; color: var(--ink-soft); font-weight: 500; }
-  .navlinks a:hover { color: var(--ink); }
+  .navlinks { display: flex; gap: 14px; font-size: 12px; }
+  .navlinks a {
+    text-decoration: none; color: #f3f1ea; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+    border: 1px solid rgba(243,241,234,0.45); border-radius: 999px; padding: 10px 18px;
+    display: inline-flex; align-items: center; gap: 8px; transition: background .2s ease, border-color .2s ease, color .2s ease; white-space: nowrap;
+  }
+  .navlinks a::after { content: ">"; font-weight: 700; color: var(--accent); }
+  .navlinks a:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .navlinks a:hover::after { color: #fff; }
 
+  /* ===== HERO (pillnav style) ===== */
   .hero {
-    padding: 76px 0 56px;
-    border-bottom: 1px solid var(--border);
+    position: relative; min-height: 92vh; display: flex; align-items: center; justify-content: center; text-align: center;
+    background: linear-gradient(to bottom, rgba(6,18,14,0.82), rgba(6,18,14,0.9)), url('img/piece9.jpg') center/cover no-repeat;
+    color: #f3f1ea; padding: 100px 24px;
   }
-  .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
-  .eyebrow {
-    font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em;
-    color: var(--accent); margin: 0 0 14px;
-  }
+  .hero-inner { max-width: 820px; }
+  .eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 0.35em; color: var(--accent); margin: 0 0 24px; font-weight: 700; }
   h1 {
-    font-size: clamp(32px, 4.6vw, 48px); line-height: 1.08; letter-spacing: -0.02em;
-    margin: 0 0 18px; font-weight: 700;
+    font-family: var(--serif); font-size: clamp(38px, 6.4vw, 78px); line-height: 1.04; letter-spacing: 0.04em;
+    margin: 0 0 26px; font-weight: 700; text-transform: uppercase;
   }
-  .hero p.lede { font-size: 17px; color: var(--ink-soft); max-width: 46ch; margin: 0 0 28px; }
-  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero p.lede { font-family: var(--sans); font-size: 17px; color: #e7e4da; max-width: 54ch; margin: 0 auto 36px; line-height: 1.7; }
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
   .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 12px 20px; border-radius: 8px; font-size: 14px; font-weight: 600;
-    text-decoration: none; border: 1px solid transparent; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 999px; font-size: 13px; font-weight: 700;
+    text-decoration: none; border: 1px solid transparent; cursor: pointer; text-transform: uppercase; letter-spacing: 0.08em;
+    transition: background .2s ease, color .2s ease, border-color .2s ease;
   }
-  .btn-primary { background: var(--ink); color: var(--surface); }
-  .btn-primary:hover { background: #000; }
-  .btn-ghost { border-color: var(--border); color: var(--ink); background: transparent; }
-  .btn-ghost:hover { border-color: var(--ink-soft); }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: #00613f; }
+  .btn-ghost { border-color: rgba(243,241,234,0.55); color: #f3f1ea; background: transparent; }
+  .btn-ghost:hover { border-color: #f3f1ea; background: rgba(243,241,234,0.12); }
 
-  .stat-card {
-    background: var(--surface-raised); border: 1px solid var(--border); border-radius: 12px;
-    padding: 28px;
-  }
-  .stat-row { display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--border); }
-  .stat-row:last-child { border-bottom: none; }
-  .stat-num { font-family: var(--mono); font-weight: 700; font-size: 20px; }
-  .stat-label { font-size: 13px; color: var(--ink-soft); }
+  .stat-strip { background: var(--surface); border-bottom: 1px solid var(--border); }
+  .stat-row-wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat-cell { padding: 36px 24px; text-align: center; border-right: 1px solid var(--border); }
+  .stat-cell:last-child { border-right: none; }
+  .stat-num { font-family: var(--serif); font-weight: 700; font-size: 30px; color: var(--ink); }
+  .stat-label { font-size: 11px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.12em; margin-top: 6px; }
 
-  section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+  section.block { padding: 96px 0; }
+  .block.light { background: var(--surface); }
+  .block.dark { background: #0c1a15; color: #f3f1ea; }
+  .block-head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+  .eyebrow-sm { font-size: 11px; text-transform: uppercase; letter-spacing: 0.3em; color: var(--accent); font-weight: 700; margin: 0 0 14px; }
   h2 {
-    font-size: 26px; letter-spacing: -0.01em; margin: 0 0 8px; font-weight: 700;
+    font-family: var(--serif); font-size: clamp(28px, 3.4vw, 42px); letter-spacing: 0.02em;
+    margin: 0 0 14px; font-weight: 700; text-transform: uppercase;
   }
-  .section-intro { color: var(--ink-soft); font-size: 15px; margin: 0 0 36px; max-width: 56ch; }
+  .block.dark h2, .block.dark .eyebrow-sm { color: #f3f1ea; }
+  .section-intro { color: var(--ink-soft); font-size: 15px; margin: 0; }
+  .block.dark .section-intro { color: #d8d5ca; }
 
-  .gallery {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  /* ===== ASYMMETRIC GALLERY (from magazine variant) ===== */
+  .gallery { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 140px; gap: 22px; margin-top: 10px; }
+  .piece { position: relative; border-radius: 2px; overflow: visible; }
+  .piece .piece-thumb { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 2px; box-shadow: 0 10px 30px rgba(26,26,24,0.12); }
+  .piece-body {
+    position: absolute; left: -10px; bottom: -22px; background: var(--surface-raised); border: 1px solid var(--border);
+    padding: 10px 16px; max-width: 85%; box-shadow: 0 6px 18px rgba(26,26,24,0.1);
   }
-  .piece {
-    background: var(--surface-raised); border: 1px solid var(--border); border-radius: 10px;
-    overflow: hidden;
-  }
-  .piece-thumb {
-    aspect-ratio: 1 / 1; background: #efece3;
-    display: flex; align-items: center; justify-content: center;
-    color: #b7b2a1; font-family: var(--mono); font-size: 12px;
-  }
-  .piece-body { padding: 14px 16px; }
-  .piece-name { font-weight: 600; font-size: 14px; margin: 0 0 4px; }
-  .piece-meta { font-size: 12px; color: var(--ink-soft); font-family: var(--mono); }
+  .piece-name { font-family: var(--serif); font-weight: 700; font-size: 16px; margin: 0 0 2px; }
+  .piece-meta { font-size: 11px; color: var(--ink-soft); font-family: var(--mono); }
   .piece-link {
-    display: block; padding: 10px 16px; font-size: 13px; font-weight: 600;
-    border-top: 1px solid var(--border); text-decoration: none; color: var(--accent);
+    position: absolute; top: 10px; right: 10px; display: inline-block; padding: 6px 12px; font-size: 11px; font-weight: 700;
+    text-decoration: none; color: #fff; background: var(--accent); text-transform: uppercase; letter-spacing: 0.04em; border-radius: 2px;
   }
+  .p1 { grid-column: 1 / 4; grid-row: 1 / 4; margin-bottom: 26px; }
+  .p2 { grid-column: 4 / 7; grid-row: 1 / 3; transform: rotate(1.2deg); margin: 0 0 30px 10px; }
+  .p3 { grid-column: 4 / 6; grid-row: 3 / 5; transform: rotate(-1deg); margin-top: 20px; }
+  .p4 { grid-column: 6 / 7; grid-row: 3 / 5; margin-top: 20px; }
+  .p5 { grid-column: 1 / 3; grid-row: 4 / 6; margin-top: 10px; }
+  .p6 { grid-column: 3 / 5; grid-row: 5 / 8; transform: rotate(0.8deg); margin: 30px 0 30px; }
+  .p7 { grid-column: 5 / 7; grid-row: 5 / 7; margin-top: 10px; }
 
-  .custom-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .step { }
-  .step-num {
-    font-family: var(--mono); color: var(--accent); font-size: 13px; font-weight: 700; margin-bottom: 10px;
-  }
-  .step h3 { font-size: 16px; margin: 0 0 8px; }
+  /* sur-mesure: 2-col editorial with image */
+  .editorial-row { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .editorial-row img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/3; display: block; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 20px; }
+  .contact-card { background: var(--surface-raised); border: 1px solid var(--border); border-radius: 4px; padding: 32px; }
+  .block.dark .contact-card { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.15); }
+  .contact-card h3 { font-family: var(--serif); margin: 0 0 10px; font-size: 19px; text-transform: uppercase; letter-spacing: 0.02em; }
+  .contact-card p { color: var(--ink-soft); font-size: 14px; margin: 0 0 18px; }
+  .block.dark .contact-card p { color: #d8d5ca; }
+
+  .custom-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
+  .step-num { font-family: var(--serif); color: var(--accent); font-size: 28px; font-weight: 700; margin-bottom: 10px; display: block; }
+  .step h3 { font-family: var(--serif); font-size: 17px; margin: 0 0 8px; text-transform: uppercase; letter-spacing: 0.02em; }
   .step p { font-size: 14px; color: var(--ink-soft); margin: 0; }
 
-  .pricing-note {
-    margin-top: 32px; padding: 18px 20px; background: var(--surface-raised);
-    border: 1px solid var(--border); border-radius: 10px; font-size: 14px; color: var(--ink-soft);
-  }
+  .pricing-note { margin-top: 40px; padding: 24px 28px; background: var(--surface-raised); border: 1px solid var(--border); border-radius: 4px; font-size: 14px; color: var(--ink-soft); }
   .pricing-note strong { color: var(--ink); }
 
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
-  .contact-card {
-    background: var(--surface-raised); border: 1px solid var(--border); border-radius: 12px; padding: 28px;
-  }
-  .contact-card h3 { margin: 0 0 6px; font-size: 16px; }
-  .contact-card p { color: var(--ink-soft); font-size: 14px; margin: 0 0 16px; }
-
   footer {
-    padding: 32px 0 48px; font-size: 13px; color: var(--ink-soft);
-    display: flex; justify-content: space-between;
+    padding: 36px 0 52px; font-size: 12px; color: var(--ink-soft); display: flex; justify-content: space-between;
+    text-transform: uppercase; letter-spacing: 0.06em; background: var(--surface); border-top: 1px solid var(--border);
   }
 
   @media (max-width: 760px) {
-    .hero-grid, .contact-grid { grid-template-columns: 1fr; }
-    .gallery, .custom-grid { grid-template-columns: 1fr 1fr; }
-    nav.wrap { flex-wrap: wrap; height: auto; padding: 12px 24px; gap: 10px; }
-    .navlinks { display: flex; gap: 16px; font-size: 13px; flex-wrap: wrap; width: 100%; justify-content: center; }
+    .editorial-row, .contact-grid { grid-template-columns: 1fr; }
+    .custom-grid { grid-template-columns: 1fr 1fr; }
+    .stat-row-wrap { grid-template-columns: 1fr 1fr; }
+    .stat-cell:nth-child(2) { border-right: none; }
+    .stat-cell { border-bottom: 1px solid var(--border); }
+    nav.wrap { flex-wrap: wrap; height: auto; padding: 16px 24px; gap: 12px; }
+    .navlinks { display: flex; gap: 10px; font-size: 11px; flex-wrap: wrap; width: 100%; justify-content: center; }
+    .hero { min-height: 70vh; padding: 70px 20px; }
+    section.block { padding: 64px 0; }
+    .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
+    .p1, .p2, .p3, .p4, .p5, .p6, .p7 { grid-column: auto / span 2; grid-row: auto / span 2; transform: none; margin: 0 0 30px; }
   }
   @media (max-width: 480px) {
-    .gallery, .custom-grid { grid-template-columns: 1fr; }
-    .navlinks { gap: 12px; font-size: 12px; }
+    .custom-grid { grid-template-columns: 1fr; }
+    .stat-row-wrap { grid-template-columns: 1fr 1fr; }
+    .navlinks a { padding: 8px 12px; font-size: 10px; }
+    .gallery { grid-template-columns: 1fr; grid-auto-rows: 220px; }
+    .p1, .p2, .p3, .p4, .p5, .p6, .p7 { grid-column: 1 / 2; grid-row: auto / span 2; }
   }
 </style>
 </head>
@@ -161,144 +168,108 @@
 </header>
 
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <p class="eyebrow">Impression 3D — Bambu Lab P2S — Morbihan</p>
-      <h1>Des pièces imprimées avec précision, du design au sur-mesure.</h1>
-      <p class="lede">Je conçois et imprime des objets fonctionnels et décoratifs en 3D. Plus de 700 téléchargements sur Cults3D, et des commandes personnalisées possibles pour vos projets.</p>
-      <div class="cta-row">
-        <a href="#sur-mesure" class="btn btn-primary">Demander un devis sur mesure</a>
-        <a href="https://cults3d.com/fr/utilisateurs/francknos" class="btn btn-ghost" target="_blank" rel="noopener">Voir le profil Cults3D ↗</a>
-      </div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-row"><span class="stat-label">Designs publiés</span><span class="stat-num">34</span></div>
-      <div class="stat-row"><span class="stat-label">Téléchargements</span><span class="stat-num">705</span></div>
-      <div class="stat-row"><span class="stat-label">Ventes cumulées</span><span class="stat-num">688 €</span></div>
-      <div class="stat-row"><span class="stat-label">Abonnés Cults3D</span><span class="stat-num">32</span></div>
+  <div class="hero-inner">
+    <p class="eyebrow">Impression 3D — Bambu Lab P2S — Morbihan</p>
+    <h1>Des pièces imprimées avec précision, du design au sur-mesure.</h1>
+    <p class="lede">Je conçois et imprime des objets fonctionnels et décoratifs en 3D. Plus de 700 téléchargements sur Cults3D, et des commandes personnalisées possibles pour vos projets.</p>
+    <div class="cta-row">
+      <a href="#sur-mesure" class="btn btn-primary">Demander un devis sur mesure</a>
+      <a href="https://cults3d.com/fr/utilisateurs/francknos" class="btn btn-ghost" target="_blank" rel="noopener">Voir le profil Cults3D ↗</a>
     </div>
   </div>
 </section>
 
-<section id="galerie">
+<div class="stat-strip">
   <div class="wrap">
-    <h2>Galerie</h2>
-    <p class="section-intro">Une sélection de pièces conçues et imprimées. Chaque modèle est disponible à l'achat sur Cults3D, ou imprimable à la demande.</p>
+    <div class="stat-row-wrap">
+      <div class="stat-cell"><div class="stat-num">34</div><div class="stat-label">Designs publiés</div></div>
+      <div class="stat-cell"><div class="stat-num">705</div><div class="stat-label">Téléchargements</div></div>
+      <div class="stat-cell"><div class="stat-num">688 €</div><div class="stat-label">Ventes cumulées</div></div>
+      <div class="stat-cell"><div class="stat-num">32</div><div class="stat-label">Abonnés Cults3D</div></div>
+    </div>
+  </div>
+</div>
+
+<section id="galerie" class="block light">
+  <div class="wrap">
+    <div class="block-head">
+      <p class="eyebrow-sm">Collection</p>
+      <h2>Galerie</h2>
+      <p class="section-intro">Une sélection de pièces conçues et imprimées. Chaque modèle est disponible à l'achat sur Cults3D, ou imprimable à la demande.</p>
+    </div>
     <div class="gallery">
-      <div class="piece">
-        <img class="piece-thumb" src="img/piece9.jpg" alt="Mécanisme d'horloge squelette imprimé en 3D" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <div class="piece-body">
-          <p class="piece-name">Horloge squelette</p>
-          <p class="piece-meta">PLA · cadrans et aiguilles fonctionnels</p>
-        </div>
-        <a href="https://cults3d.com/fr/utilisateurs/francknos" class="piece-link" target="_blank" rel="noopener">Voir sur Cults3D →</a>
+      <div class="piece p1">
+        <img class="piece-thumb" src="img/piece9.jpg" alt="Mécanisme d'horloge squelette imprimé en 3D">
+        <a href="https://cults3d.com/fr/utilisateurs/francknos" class="piece-link" target="_blank" rel="noopener">Cults3D →</a>
+        <div class="piece-body"><p class="piece-name">Horloge squelette</p><p class="piece-meta">PLA · cadrans et aiguilles fonctionnels</p></div>
       </div>
-      <div class="piece">
-        <img class="piece-thumb" src="img/piece1.jpg" alt="Cryptex Da Vinci Code imprimé en 3D" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <div class="piece-body">
-          <p class="piece-name">Cryptex "Da Vinci Code"</p>
-          <p class="piece-meta">PLA · mécanisme à combinaison</p>
-        </div>
-        <a href="https://cults3d.com/fr/utilisateurs/francknos" class="piece-link" target="_blank" rel="noopener">Voir sur Cults3D →</a>
+      <div class="piece p2">
+        <img class="piece-thumb" src="img/piece1.jpg" alt="Cryptex Da Vinci Code imprimé en 3D">
+        <a href="https://cults3d.com/fr/utilisateurs/francknos" class="piece-link" target="_blank" rel="noopener">Cults3D →</a>
+        <div class="piece-body"><p class="piece-name">Cryptex "Da Vinci Code"</p><p class="piece-meta">PLA · mécanisme à combinaison</p></div>
       </div>
-      <div class="piece">
-        <img class="piece-thumb" src="img/piece8.jpg" alt="Pendule mécanique imprimée en 3D" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <div class="piece-body">
-          <p class="piece-name">Pendule mécanique</p>
-          <p class="piece-meta">PLA · présentation en cadre</p>
-        </div>
-        <a href="https://cults3d.com/fr/utilisateurs/francknos" class="piece-link" target="_blank" rel="noopener">Voir sur Cults3D →</a>
+      <div class="piece p3">
+        <img class="piece-thumb" src="img/piece8.jpg" alt="Pendule mécanique imprimée en 3D">
+        <a href="https://cults3d.com/fr/utilisateurs/francknos" class="piece-link" target="_blank" rel="noopener">Cults3D →</a>
+        <div class="piece-body"><p class="piece-name">Pendule mécanique</p><p class="piece-meta">PLA · présentation en cadre</p></div>
       </div>
-      <div class="piece">
-        <img class="piece-thumb" src="img/piece3.jpg" alt="Chien avec un bras Hulk imprimé en 3D" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <div class="piece-body">
-          <p class="piece-name">Bras Hulk (format jouet)</p>
-          <p class="piece-meta">PLA · pièce cosplay / jouet</p>
-        </div>
-        <a href="https://cults3d.com/fr/utilisateurs/francknos" class="piece-link" target="_blank" rel="noopener">Voir sur Cults3D →</a>
+      <div class="piece p4">
+        <img class="piece-thumb" src="img/piece3.jpg" alt="Chien avec un bras Hulk imprimé en 3D">
+        <a href="https://cults3d.com/fr/utilisateurs/francknos" class="piece-link" target="_blank" rel="noopener">Cults3D →</a>
+        <div class="piece-body"><p class="piece-name">Bras Hulk (format jouet)</p><p class="piece-meta">PLA · pièce cosplay / jouet</p></div>
       </div>
-      <div class="piece">
-        <img class="piece-thumb" src="img/piece4.jpg" alt="Mécanisme d'engrenages imprimé en 3D" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <div class="piece-body">
-          <p class="piece-name">Mécanisme d'engrenages</p>
-          <p class="piece-meta">PLA · pièces mobiles</p>
-        </div>
-        <a href="https://cults3d.com/fr/utilisateurs/francknos" class="piece-link" target="_blank" rel="noopener">Voir sur Cults3D →</a>
+      <div class="piece p5">
+        <img class="piece-thumb" src="img/piece4.jpg" alt="Mécanisme d'engrenages imprimé en 3D">
+        <a href="https://cults3d.com/fr/utilisateurs/francknos" class="piece-link" target="_blank" rel="noopener">Cults3D →</a>
+        <div class="piece-body"><p class="piece-name">Mécanisme d'engrenages</p><p class="piece-meta">PLA · pièces mobiles</p></div>
       </div>
-      <div class="piece">
-        <img class="piece-thumb" src="img/piece2.jpg" alt="Cuillère doseuse imprimée en 3D" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <div class="piece-body">
-          <p class="piece-name">Cuillère doseuse</p>
-          <p class="piece-meta">PLA · objet fonctionnel</p>
-        </div>
-        <a href="https://cults3d.com/fr/utilisateurs/francknos" class="piece-link" target="_blank" rel="noopener">Voir sur Cults3D →</a>
+      <div class="piece p6">
+        <img class="piece-thumb" src="img/piece2.jpg" alt="Cuillère doseuse imprimée en 3D">
+        <a href="https://cults3d.com/fr/utilisateurs/francknos" class="piece-link" target="_blank" rel="noopener">Cults3D →</a>
+        <div class="piece-body"><p class="piece-name">Cuillère doseuse</p><p class="piece-meta">PLA · objet fonctionnel</p></div>
       </div>
-      <div class="piece">
-        <img class="piece-thumb" src="img/piece5.jpg" alt="Composition d'engrenages imprimée en 3D" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <div class="piece-body">
-          <p class="piece-name">Composition d'engrenages</p>
-          <p class="piece-meta">PLA · pièce décorative</p>
-        </div>
-        <a href="https://cults3d.com/fr/utilisateurs/francknos" class="piece-link" target="_blank" rel="noopener">Voir sur Cults3D →</a>
+      <div class="piece p7">
+        <img class="piece-thumb" src="img/piece5.jpg" alt="Composition d'engrenages imprimée en 3D">
+        <a href="https://cults3d.com/fr/utilisateurs/francknos" class="piece-link" target="_blank" rel="noopener">Cults3D →</a>
+        <div class="piece-body"><p class="piece-name">Composition d'engrenages</p><p class="piece-meta">PLA · pièce décorative</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="sur-mesure">
+<section id="sur-mesure" class="block light">
   <div class="wrap">
-    <h2>Sur mesure</h2>
-    <p class="section-intro">Vous avez besoin d'une pièce introuvable, d'un support spécifique ou d'un objet personnalisé ? Deux formules possibles, selon ce dont vous avez besoin.</p>
-
-    <div class="contact-grid" style="margin-bottom: 36px;">
-      <div class="contact-card">
-        <h3>Plan 3D seul</h3>
-        <p>Je modélise la pièce et vous livre le fichier (STL/3MF, modifiable sur demande). Vous imprimez vous-même ou ailleurs.</p>
-      </div>
-      <div class="contact-card">
-        <h3>Impression 3D</h3>
-        <p>Conception + impression sur ma Bambu Lab P2S, prête à l'emploi. Remise en main propre (secteur Kervignac/Hennebont) ou envoi postal.</p>
+    <div class="block-head">
+      <p class="eyebrow-sm">Service</p>
+      <h2>Sur mesure</h2>
+      <p class="section-intro">Vous avez besoin d'une pièce introuvable, d'un support spécifique ou d'un objet personnalisé ? Deux formules possibles, selon ce dont vous avez besoin.</p>
+    </div>
+    <div class="editorial-row">
+      <img src="img/piece4.jpg" alt="Mécanisme d'engrenages, pièce sur mesure">
+      <div class="contact-grid" style="margin-top:0;">
+        <div class="contact-card"><h3>Plan 3D seul</h3><p>Je modélise la pièce et vous livre le fichier (STL/3MF, modifiable sur demande). Vous imprimez vous-même ou ailleurs.</p></div>
+        <div class="contact-card"><h3>Impression 3D</h3><p>Conception + impression sur ma Bambu Lab P2S, prête à l'emploi. Remise en main propre (secteur Kervignac/Hennebont) ou envoi postal.</p></div>
       </div>
     </div>
-
     <div class="custom-grid">
-      <div class="step">
-        <p class="step-num">01</p>
-        <h3>Décrivez votre besoin</h3>
-        <p>Envoyez une photo, un croquis ou une mesure de la pièce recherchée via le formulaire de contact, et précisez la formule souhaitée (plan seul ou impression).</p>
-      </div>
-      <div class="step">
-        <p class="step-num">02</p>
-        <h3>Devis et validation</h3>
-        <p>Je vous propose un prix selon la complexité, le matériau et le temps d'impression estimé.</p>
-      </div>
-      <div class="step">
-        <p class="step-num">03</p>
-        <h3>Livraison</h3>
-        <p>Fichier envoyé par email, ou pièce imprimée remise/livrée selon la formule choisie.</p>
-      </div>
+      <div class="step"><span class="step-num">01</span><h3>Décrivez votre besoin</h3><p>Envoyez une photo, un croquis ou une mesure de la pièce recherchée via le formulaire de contact, et précisez la formule souhaitée (plan seul ou impression).</p></div>
+      <div class="step"><span class="step-num">02</span><h3>Devis et validation</h3><p>Je vous propose un prix selon la complexité, le matériau et le temps d'impression estimé.</p></div>
+      <div class="step"><span class="step-num">03</span><h3>Livraison</h3><p>Fichier envoyé par email, ou pièce imprimée remise/livrée selon la formule choisie.</p></div>
     </div>
-    <div class="pricing-note">
-      <strong>Paiement :</strong> acompte de 30 à 50 % à la validation du devis (lien de paiement en ligne), solde à la livraison. Possibilité de paiement en liquide pour les remises en main propre locales.
-    </div>
+    <div class="pricing-note"><strong>Paiement :</strong> acompte de 30 à 50 % à la validation du devis (lien de paiement en ligne), solde à la livraison. Possibilité de paiement en liquide pour les remises en main propre locales.</div>
   </div>
 </section>
 
-<section id="contact" style="border-bottom: none;">
+<section id="contact" class="block dark">
   <div class="wrap">
-    <h2>Contact</h2>
-    <p class="section-intro">Pour une commande, une question sur un modèle existant ou un projet sur mesure.</p>
+    <div class="block-head">
+      <p class="eyebrow-sm">Prendre contact</p>
+      <h2>Contact</h2>
+      <p class="section-intro">Pour une commande, une question sur un modèle existant ou un projet sur mesure.</p>
+    </div>
     <div class="contact-grid">
-      <div class="contact-card">
-        <h3>Par email</h3>
-        <p>Décrivez votre demande, je réponds généralement sous 48h.</p>
-        <a href="mailto:francknos+3d@gmail.com" class="btn btn-primary">Envoyer un email</a>
-      </div>
-      <div class="contact-card">
-        <h3>Sur Cults3D</h3>
-        <p>Parcourez les designs déjà disponibles à l'achat.</p>
-        <a href="https://cults3d.com/fr/utilisateurs/francknos" class="btn btn-ghost" target="_blank" rel="noopener">Voir le profil ↗</a>
-      </div>
+      <div class="contact-card"><h3>Par email</h3><p>Décrivez votre demande, je réponds généralement sous 48h.</p><a href="mailto:francknos+3d@gmail.com" class="btn btn-primary">Envoyer un email</a></div>
+      <div class="contact-card"><h3>Sur Cults3D</h3><p>Parcourez les designs déjà disponibles à l'achat.</p><a href="https://cults3d.com/fr/utilisateurs/francknos" class="btn btn-ghost" target="_blank" rel="noopener">Voir le profil ↗</a></div>
     </div>
   </div>
 </section>
